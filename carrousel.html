@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title>Carrousel</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <style media="screen">
+        .slideshow {
+           width: 350px;
+           height: 200px;
+           overflow: hidden;
+           border: 3px solid #F2F2F2;
+        }
+
+        .slideshow ul {
+           width: 400%;
+           height: 200px;
+           padding:0; margin:0;
+           list-style: none;
+        }
+        .slideshow li {
+           float: left;
+        }
+
+    </style>
+
+  </head>
+  <body>
+    <div class="slideshow">
+      <ul>
+        <li><img src="./img/image1.jpeg" alt="" width="350" height="200" /></li>
+        <li><img src="./img/image2.jpeg" alt="" width="350" height="200" /></li>
+        <li><img src="./img/image3.jpeg" alt="" width="350" height="200" /></li>
+        <li><img src="./img/image4.jpeg" alt="" width="350" height="200" /></li>
+      </ul>
+    </div>
+
+    <div>
+      <button id="left">&laquo;</button>
+      <button id="right">&raquo;</button>
+      
+    </div>
+
+  <script type="text/javascript">
+    $(function(){
+      setInterval(function(){
+        $(".slideshow ul").animate({marginLeft:-350},800,function(){
+            $(this).css({marginLeft:0}).find("li:last").after($(this).find("li:first"));
+          })
+        }, 3000);
+      });
+
+
+        $("#right").click(function() {
+          $(".slideshow ul").animate({marginLeft:-350},800,function(){
+            $(this).css({marginLeft:0}).find("li:last").after($(this).find("li:first"));
+          })
+        });
+
+
+        $("#left").click(function() {
+          $(".slideshow ul").animate({marginLeft:350},800,function(){
+            $(this).css({marginLeft:0}).find("li:first").before($(this).find("li:last"));
+          })
+        });
+
+
+
+  </script>
+
+  </body>
+</html>
